@@ -18,8 +18,8 @@ module.exports = class CustomBanGif extends Plugin {
 		});
 
         inject(this.injectId, getModuleByDisplayName('BanConfirm', false).prototype, 'render', (args, res) => {
-            var videoUrl = this.settings.get('videoUrl', COCA_COLA_ESPUMA)
-            var gifCotainer = findInReactTree(res, e => e && e.autoPlay && e.loop);
+            const videoUrl = this.settings.get('videoUrl', COCA_COLA_ESPUMA)
+            const gifCotainer = findInReactTree(res, e => e && e.autoPlay && e.loop);
             gifCotainer.children[0].props.src = videoUrl;
  
             return res;
@@ -27,7 +27,7 @@ module.exports = class CustomBanGif extends Plugin {
     }
 
     pluginWillUnload() {
-        powercord.api.commands.unregisterSettings(this.engityID);
+        powercord.api.commands.unregisterSettings(this.entityID);
         uninject(this.injectId)
     }
 
