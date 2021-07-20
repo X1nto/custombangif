@@ -7,7 +7,6 @@ const { COCA_COLA_ESPUMA } = require('./constants');
 
 module.exports = class CustomBanGif extends Plugin {
 
-    commandName = 'custombangif';
     injectId = 'customBanGifInject';
 
     startPlugin() {
