@@ -12,17 +12,21 @@ module.exports = class CustomBanGif extends Plugin {
 
     startPlugin() {
         powercord.api.settings.registerSettings(this.entityID, {
-			category: this.entityID,
-			label: 'Custom Ban Gif',
-			render: settings,
-		});
+            category: this.entityID,
+            label: 'Custom Ban Gif',
+            render: settings,
+        });
 
-        inject(this.injectId, getModuleByDisplayName('BanConfirm', false).prototype, 'render', (args, res) => {
-            const videoUrl = this.settings.get('videoUrl', COCA_COLA_ESPUMA)
-            const gifCotainer = findInReactTree(res, e => e && e.autoPlay && e.loop);
-            gifCotainer.children[0].props.src = videoUrl;
- 
-            return res;
+        inject(
+            this.injectId, 
+            getModuleByDisplayName('BanConfirm', false).prototype, 
+            'render',
+            (_args, res) => {
+                const videoUrl = this.settings.get('videoUrl', COCA_COLA_ESPUMA)
+                const gifCotainer = findInReactTree(res, e => e && e.autoPlay && e.loop);
+                gifCotainer.children[0].props.src = videoUrl;
+    
+                return res;
          });
     }
 
