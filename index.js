@@ -2,8 +2,9 @@ const { Plugin } = require('powercord/entities');
 const { inject, uninject } =  require('powercord/injector');
 const { getModuleByDisplayName } = require('powercord/webpack');
 const { findInReactTree } = require('powercord/util');
-const settings = require('./components/Settings');
 const { COCA_COLA_ESPUMA } = require('./constants');
+
+const settings = require('./components/Settings');
 
 module.exports = class CustomBanGif extends Plugin {
 
